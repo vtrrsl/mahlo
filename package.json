@@ -1,0 +1,23 @@
+{
+  "name": "mahlo",
+  "version": "1.0.0",
+  "description": "A tiny library for lazy loading images. With support for srcset, without dependencies.",
+  "main": "mahlo.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vtrrsl/mahlo.git"
+  },
+  "keywords": [
+    "lazy-loading",
+    "lazyload",
+    "no-jquery",
+    "images",
+    "image"
+  ],
+  "author": "vtrrsl (vtrr.sl)",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/vtrrsl/mahlo/issues"
+  },
+  "homepage": "https://github.com/vtrrsl/mahlo#readme"
+}
