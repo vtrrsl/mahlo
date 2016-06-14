@@ -51,7 +51,7 @@ window.mahlo = ( (base, document) => {
   };
 
   mahlo.show = () => {
-    var elements = document.querySelectorAll('img[data-mahlo]');
+    var elements = Array.from(document.querySelectorAll('img[data-mahlo]'));
     var elemTotal = elements.length;
     var window = {
       top: 0 - offset.vrt,
