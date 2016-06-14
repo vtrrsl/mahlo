@@ -14,7 +14,7 @@ Initiate with `mahlo.init`
 mahlo.init({
   offset: 100,
   check: 250
-  });
+});
 ```
 
 ### Options
