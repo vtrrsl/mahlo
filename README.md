@@ -1,7 +1,7 @@
 # Mahlo
 A tiny library for lazy loading images. With support for `srcset`, without dependencies.
 
-Written with ES6 syntax - use with care, as always.
+Written with ES6 syntax and features - use with care.
 
 ## Usage
 `srcset` is optional and will be shown if included, no setting required.
