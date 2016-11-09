@@ -1,44 +1,46 @@
 'use strict';
-window.mahlo = ( (base, document) => {
-  var mahlo = {};
-  var elemCount = 0;
-  var loadEvent = () => {};
-  var holdUp, delay, offset;
+window.mahlo = ((base, document) => {
+  const mahlo = {};
+  let elemCount = 0;
+  let loadEvent = () => {};
+  let holdUp;
+  let delay;
+  let offset;
 
-  var check = () => {
+  function check() {
     clearTimeout(holdUp);
-    holdUp = setTimeout( () => {
+    holdUp = setTimeout(() => {
       mahlo.show();
       holdUp = null;
     }, delay);
-  };
+  }
 
-  var inView = (item, window) => {
+  function notShown(item) {
+    return (item.offsetParent === null);
+  }
+
+  function inView(item, window) {
     if (notShown(item)) {
       return false;
     }
-    var container = item.getBoundingClientRect();
-    return (container.top <= window.bottom 
-        && container.right >= window.left 
-        && container.bottom >= window.top 
-        && container.left <= window.right);
-  };
+    const container = item.getBoundingClientRect();
+    return (container.top <= window.bottom &&
+        container.right >= window.left &&
+        container.bottom >= window.top &&
+        container.left <= window.right);
+  }
 
-  var notShown = (item) => {
-    return (item.offsetParent === null);
-  };
-
-  mahlo.init = (option) => {
+  mahlo.init = option => {
     option = option || {};
-    const {offset: offsetMain=0} = option;
-    const {offsetHrz=offsetMain} = option;
-    const {offsetVrt=offsetMain} = option;
+    const {offset: offsetMain = 0} = option;
+    const {offsetHrz = offsetMain} = option;
+    const {offsetVrt = offsetMain} = option;
     const optionInt = (options, initial) => {
-      return parseInt(options || initial);
+      return parseInt((options || initial), 10);
     };
     offset = {hrz: offsetHrz, vrt: offsetVrt};
     delay = optionInt(option.check, 500);
-    ({loadEvent=loadEvent} = option);
+    ({loadEvent = loadEvent} = option);
 
     mahlo.show();
     if (document.addEventListener) {
@@ -51,19 +53,19 @@ window.mahlo = ( (base, document) => {
   };
 
   mahlo.show = () => {
-    var elements = Array.from(document.querySelectorAll('img[data-mahlo]'));
-    var elemTotal = elements.length;
-    var window = {
+    const elements = Array.from(document.querySelectorAll('img[data-mahlo]'));
+    const elemTotal = elements.length;
+    let window = {
       top: 0 - offset.vrt,
       right: base.innerWidth + offset.hrz,
       bottom: base.innerHeight + offset.vrt,
       left: 0 - offset.hrz
     };
 
-    elements.forEach((elem) => {
+    elements.forEach(elem => {
       if (inView(elem, window)) {
         elem.src = elem.getAttribute('data-mahlo');
-        var srcSet = elem.getAttribute('data-set-mahlo');
+        const srcSet = elem.getAttribute('data-set-mahlo');
         if (srcSet) {
           elem.setAttribute('srcset', srcSet);
           elem.removeAttribute('data-set-mahlo');
