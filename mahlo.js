@@ -92,4 +92,4 @@ window.mahlo = ((base, document) => {
   };
 
   return mahlo;
-})(this, document);
+})(window, document);

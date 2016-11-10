@@ -1,6 +1,6 @@
 {
   "name": "mahlo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "vtrrsl (vtrr.sl)",
   "description": "A tiny library for lazy loading images. With support for srcset, without dependencies.",
   "license": "Unlicense",
